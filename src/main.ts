@@ -6,7 +6,7 @@ const sketch = (p: p5) => {
   };
 
   p.draw = () => {
-    p.background(220);
+    p.background(0);
     p.ellipse(p.mouseX, p.mouseY, 50, 50);
   };
 };
