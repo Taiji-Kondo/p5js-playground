@@ -4,7 +4,7 @@ const physicalOperation = (p: p5) => {
   const ellipseSize = 50;
   const ellipseSizeHalf = ellipseSize / 2;
 
-  let positionX = 0
+  let positionX = ellipseSizeHalf
   let speed = 1
 
   p.setup = () => {
@@ -17,14 +17,22 @@ const physicalOperation = (p: p5) => {
     p.fill(255, 255, 0)
     p.ellipse(positionX, p.height / 2, ellipseSize, ellipseSize)
 
-    if (positionX > p.width + ellipseSizeHalf) {
-      positionX = 0 - ellipseSizeHalf
-    }
-    if (positionX < 0 - ellipseSizeHalf) {
-      positionX = p.width + ellipseSizeHalf
+    // Loop
+    // if (positionX > p.width + ellipseSizeHalf) {
+    //   positionX = 0 - ellipseSizeHalf
+    // }
+    // if (positionX < 0 - ellipseSizeHalf) {
+    //   positionX = p.width + ellipseSizeHalf
+    // }
+    // positionX += speed
+
+    // Bound
+    if (positionX > p.width - ellipseSizeHalf || positionX < ellipseSizeHalf) {
+      speed -= speed * 2
     }
 
     positionX += speed
+
   };
 
   p.keyPressed = () => {
